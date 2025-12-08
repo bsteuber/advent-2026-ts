@@ -1,5 +1,5 @@
 import { getCombinedNodeFlags } from "typescript";
-import { open, report } from "./util";
+import { open, reportResult } from "./util";
 
 type Bank = number[];
 
@@ -40,7 +40,7 @@ function part1(file: string) {
     input.forEach((bank) => {
         totalJoltage += findJoltage(bank, 2);
     });
-    report(1, file, totalJoltage);
+    reportResult(1, file, totalJoltage);
 }
 
 
@@ -51,7 +51,7 @@ function part2(file: string) {
         // console.log(bank, findJoltage(bank, 12))
         totalJoltage += findJoltage(bank, 12);
     });
-    report(2, file, totalJoltage);
+    reportResult(2, file, totalJoltage);
 
 }
 

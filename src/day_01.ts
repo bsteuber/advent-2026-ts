@@ -1,4 +1,4 @@
-import { open, report } from './util';
+import { open, reportResult } from './util';
 
 type Rotation = {
     direction: "L" | "R";
@@ -36,7 +36,7 @@ function part1(file: string) {
             zeroCount++;
         }
     })
-    report(1, file, zeroCount);
+    reportResult(1, file, zeroCount);
 }
 
 function part2(file: string) {
@@ -66,7 +66,7 @@ function part2(file: string) {
         }
         // console.log("next:", curr, "zeros:", zeroCount);
     })
-    report(2, file, zeroCount);
+    reportResult(2, file, zeroCount);
 }
 
 part1("test")

@@ -9,11 +9,27 @@ function open(filename: string): string {
     if (!match || !match[1]) {
         throw new Error("Could not extract day number from calling file");
     }
-    return readFileSync(`inputs/day_${match[1]}/${filename}.txt`, "utf-8");
+    return readFileSync(`inputs/day_${match[1]}/${filename}.txt`, "utf-8").trimEnd();
 }
 
-function report(part: number, filename: string, result: number | string) {
+function reportResult(part: number, filename: string, result: number | string) {
     console.log(`Part ${part} (${filename}.txt):`, result);
 }
 
-export { open, report };
+function* range(n: number, end?: number) {
+    const loopStart = end ? n : 0;
+    const loopEnd = end ? end : n;
+    for (let i = loopStart; i < loopEnd; i++) {
+        yield i;
+    }
+}
+
+function* gridPoints<T>(grid: T[][]): Generator<[number, number], void, unknown> {
+    for (const [y, row] of grid.entries()) {
+        for (const x of range(row.length)) {
+            yield [x, y];
+        }
+    }
+}
+
+export { gridPoints, open, range, reportResult };

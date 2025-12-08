@@ -1,4 +1,4 @@
-import { open, report } from './util';
+import { open, reportResult } from './util';
 
 type Range = { min: number, max: number };
 type Input = Range[];
@@ -50,7 +50,7 @@ function part1(file: string) {
         }
     });
     const res = invalidIds.reduce((x, y) => x + y);
-    report(1, file, res);
+    reportResult(1, file, res);
 }
 
 function isInvalidWith(idStr: string, digits: number, slices: number): boolean {
@@ -86,7 +86,7 @@ function part2(file: string) {
         }
     });
     const res = invalidIds.reduce((x, y) => x + y, 0);
-    report(2, file, res);
+    reportResult(2, file, res);
 }
 
 part1('input');
